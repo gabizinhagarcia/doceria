@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+ 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ 
+header {
+  display: flex;
+  background-color: rgb(168, 230, 238);
+  color: rgb(187, 59, 133);
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  padding: 10px 0;
+  font-family: Lobster;
+}
+ 
+ 
+header .icon1 {
+  font-size: 50px;
+}
+ 
+ header .icon3 a{
+  font-size: 50px;
+  color: rgb(187, 59, 133);
+ }
+ 
+ 
+footer {
+  background-color: rgb(168, 230, 238);
+  color: #000000;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+ 
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #c44593; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #4e4c4e;
+}
+
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  padding: 20px;
+  background-color: rgb(204, 245, 252);
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  color: #bd1284;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #c44593;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+}
+
+.address-info {
+  margin-top: 20px;
+}
+
+ 
+ 
+.cardapiobuton {
+  color: #c44593;
+  text-decoration: none;
+  font-family: Lobster;
+  left: auto;
+}
+ 
+.voltarbuton {
+  width: 5em;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #c44593; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+ 
+.voltarbuton:hover {
+  text-decoration: underline;
+}
+ 
+.cardapio  {
+  background-color: rgb(205, 248, 253);
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ 
+.itens-cardapio {
+  display: flex;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #000;
+  border-radius: 10px;
+  align-items: center;
+}
+ 
+.itens-cardapio p {
+  margin-left: 1em;
+}
+ 
+.itens-cardapio b {
+  font-size: 1.2em;
+}
+ 
+.container {
+  display: flex; /* Utiliza Flexbox para organizar os itens filhos */
+  flex-direction: column;
+  flex-wrap: wrap; /* Permite que os itens filhos quebrem para a linha seguinte se não couberem na mesma linha */
+  margin: 20px; /* Margem externa do container */
+}
+.container2 {
+  display: flex; /* Utiliza Flexbox para organizar os itens filhos */
+  flex-wrap: wrap; /* Permite que os itens filhos quebrem para a linha seguinte se não couberem na mesma linha */
+  justify-content: space-between; /* Distribui os itens com espaçamento igual entre eles */
+  margin: 20px; /* Margem externa do container */
+}
+.coluna {
+  flex-basis: 25%; /* Define a largura base das colunas como 20% do espaço disponível */
+  background-color:rgba(238, 168, 238, 0.479); /* Cor de fundo das colunas */
+  color: #000000;
+  padding: 15px; /* Espaçamento interno das colunas */
+  margin: 5px; /* Margem externa das colunas */
+  text-align: justify;
+  border-radius: 25px;
+}
+ 
+.coluna3 {
+  background-color: rgba(236, 176, 238, 0.479); /* Cor de fundo das colunas */
+  color: #000000;
+  padding: 20px; /* Espaçamento interno das colunas */
+  margin: 5px; /* Margem externa das colunas */
+  text-align:justify;
+  max-width: 25%;
+  border-radius: 25px;
+}
+ 
+  .coluna-central {
+    flex-basis: 60%; /* Define a largura base da coluna central como 60% do espaço disponível */
+    background-color: rgba(236, 176, 238, 0.479);; /* Cor de fundo da coluna central */
+    color: #fff5f5;
+    padding: 5px; /* Espaçamento interno da coluna central */
+    margin: 10px; /* Margem externa da coluna central */
+    display: flex; /* Utiliza Flexbox para organizar os itens filhos */
+    flex-direction:column;
+    align-items: center;
+    border-radius: 25px;
+  }
+ 
+.cardapio1 {
+  display: flex;
+  justify-content: space-between;
+}
