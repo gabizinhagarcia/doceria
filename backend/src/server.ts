@@ -18,3 +18,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         message: 'Erro interno do Servidor'
     })
 })
+app.listen(3333, () => console.log('servidor on line'))
