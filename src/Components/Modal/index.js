@@ -106,6 +106,7 @@ export default function App() {
             <p>O estado é: {dadosViaCep.uf}</p>
           </div>
         )}
+        
       </Modal>
     </div>
   );

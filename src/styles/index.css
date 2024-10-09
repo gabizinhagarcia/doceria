@@ -145,13 +145,34 @@ footer {
 }
  
 .cardapio  {
+  background-color: rgba(236, 176, 238, 0.479);
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.MaisVendidos  {
   background-color: rgb(205, 248, 253);
   padding: 10px;
   margin: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 25px;
 }
+.itens-MaisVendidos {
+  display: flex;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #000;
+  border-radius: 10px;
+  align-items: center;
+}
+
+
  
 .itens-cardapio {
   display: flex;
@@ -204,7 +225,7 @@ footer {
  
   .coluna-central {
     flex-basis: 60%; /* Define a largura base da coluna central como 60% do espaço disponível */
-    background-color: rgba(236, 176, 238, 0.479);; /* Cor de fundo da coluna central */
+    background-color: rgba(236, 176, 238, 0.479); /* Cor de fundo da coluna central */
     color: #fff5f5;
     padding: 5px; /* Espaçamento interno da coluna central */
     margin: 10px; /* Margem externa da coluna central */

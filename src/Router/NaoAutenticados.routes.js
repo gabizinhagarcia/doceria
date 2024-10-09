@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cardapio from '../Cardapio/cardapio'
+import MaisVendidos from '../MaisVendidos/MaisVendidos'
 
 import Cabecalho from '../Components/Cabecalho'
 import Inicio from '../Inicio'
@@ -13,6 +14,7 @@ export default function NaoAutenticados() {
                 <Route path='/' element={<Inicio />} />
 
                 <Route path='/cardapio' element={<Cardapio />} />
+                <Route path='/mais vendidos' element={<MaisVendidos />} />
 
 
                 <Route path='*' element={<Inicio />} />

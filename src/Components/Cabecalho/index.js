@@ -1,5 +1,5 @@
 import React from 'react'
-import fotoLogo from '../Rodape/logodoce.png'
+import fotologo from '../Rodape/logodoce.png'
 import { CiFacebook } from "react-icons/ci";
 import { CiInstagram } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
@@ -15,7 +15,7 @@ export default function Cabecalho() {
       </div>
       
         <div className='icon2'>
-          <img src={fotoLogo} alt="logo" width="150" height="200" />
+          <img src={fotologo} alt="logo" width="150" height="200" />
           <h1>doce magia</h1>
         </div>
 
