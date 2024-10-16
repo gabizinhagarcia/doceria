@@ -16,8 +16,11 @@ datasource db {
 model  CadastroUsuarios{
   id String @id @default(uuid())
   nome String
+  cpf String
   email String
   senha String
+  cep String
+  telefone String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
