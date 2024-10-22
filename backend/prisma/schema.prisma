@@ -13,17 +13,84 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model  CadastroUsuarios{
-  id String @id @default(uuid())
-  nome String
-  cpf String
-  email String
-  senha String
-  cep String
+model CadastroUsuarios {
+  id       String @id @default(uuid())
+  nome     String
+  cpf      String @unique
+  email    String
+  senha    String
+  cep      String
   telefone String
+
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
   @@map("cadastro_usuarios")
+}
+
+model CadastroFuncionarios {
+  id       String @id @default(uuid())
+  nome     String
+  cpf      String
+  email    String
+  senha    String
+  telefone String
+
+  
+  hierarquia CadastroHierarquia @relation( fields: [idHierarquia], references: [id])
+  idHierarquia String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("cadastro_Funcionarios")
+}
+
+model CadastroProdutos {
+  id        String @id @default(uuid())
+  nome      String
+  descricao String
+  preco     String
+  categoria String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("cadastro_Produtos")
+}
+
+model CadastroHierarquia {
+  id        String @id @default(uuid())
+  nome      String @unique
+  
+  CadastroFuncionarios CadastroFuncionarios []
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  
+
+  @@map("cadastro_Hierarquia")
+}
+
+model CadastroPedidos {
+  id        String @id @default(uuid())
+  data_da_compra   String
+  status String
+  
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("cadastro_Pedidos")
+}
+
+model CadastroItensPedidos {
+  id        String @id @default(uuid())
+  quantidade String
+  
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("cadastro_ItensPedidos")
 }

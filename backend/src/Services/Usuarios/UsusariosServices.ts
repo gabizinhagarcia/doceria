@@ -10,7 +10,17 @@ interface CadUsuarios{
 }
 
 class UsuariosServices{
- async cadastrar_usuarios({nome, cpf, email, password, cep, telefone}: CadUsuarios){
+ async cadastrar_usuarios({nome, cpf, email, password, cep, telefone, }: CadUsuarios){
+
+    const cpfExiste = await prismaClient.cadastroUsuarios.findFirst({
+        where: {
+            cpf: cpf 
+        }
+    })
+    if(cpfExiste){
+        throw new Error('CPF js esta cadastrado')
+    }
+
     const resposta = await prismaClient.cadastroUsuarios.create({
         data: {
             nome: nome,
@@ -18,7 +28,7 @@ class UsuariosServices{
             email: email,
             senha: password,
             cep: cep,
-            telefone: telefone
+            telefone: telefone,
         }
     })
     return ({dados: 'Cadastro Efetuado com Sucesso'})

@@ -3,7 +3,7 @@ import { UsuariosServices } from '../../Services/Usuarios/UsusariosServices'
 
 class UsuariosControllers {
   async cadastro_usuarios(req: Request, res: Response) {
-    const { nome, cpf, email, password, cep, telefone} = req.body  //recebe dados Front-end
+    const { nome, cpf, email, password, cep, telefone, } = req.body  //recebe dados Front-end
     const usuariosServices = new UsuariosServices()  //instancia classe serviços
     const resposta = await usuariosServices.cadastrar_usuarios({
       nome,
