@@ -3,7 +3,7 @@ import { FuncionariosServices } from '../../Services/Funcionarios/FuncionariosSe
 
 class FuncionariosControllers {
   async cadastro_funcionarios(req: Request, res: Response) {
-    const { nome, cpf, email, password, telefone, idHierarquia, } = req.body  //recebe dados Front-end
+    const { nome, cpf, email, password, telefone, idHierarquia,  } = req.body  //recebe dados Front-end
     const funcionariosServices = new FuncionariosServices()  //instancia classe serviços
     const resposta = await funcionariosServices.cadastrar_funcionarios({
       nome,
@@ -11,7 +11,8 @@ class FuncionariosControllers {
       email,
       password,
       telefone,
-      idHierarquia
+      idHierarquia,
+     
     
 
     })  //envia dados serviços e aguarda a resposta

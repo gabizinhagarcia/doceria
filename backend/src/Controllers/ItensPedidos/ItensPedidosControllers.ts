@@ -4,10 +4,11 @@ import { ItensPedidosServices } from '../../Services/ItensPedidos/ItensPedidosSe
 
 class ItensPedidosControllers {
   async cadastro_ItensPedidos(req: Request, res: Response) {
-    const { quantidade} = req.body  //recebe dados Front-end
+    const { quantidade, idProdutos} = req.body  //recebe dados Front-end
     const itensPedidosServices = new ItensPedidosServices()  //instancia classe serviços
     const resposta = await itensPedidosServices.cadastrar_ItensPedidos({
-      quantidade
+      quantidade,
+      idProdutos
     
     })  //envia dados serviços e aguarda a resposta
     return res.json(resposta) //enviara a resposta para o Front-end

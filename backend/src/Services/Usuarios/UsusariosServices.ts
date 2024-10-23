@@ -1,4 +1,5 @@
 import prismaClient from "../../prisma"
+import { hash } from 'bcryptjs'
 
 interface CadUsuarios{
     nome: string
@@ -21,12 +22,14 @@ class UsuariosServices{
         throw new Error('CPF js esta cadastrado')
     }
 
+    const passCrypt = await hash(password, 8)
+
     const resposta = await prismaClient.cadastroUsuarios.create({
         data: {
             nome: nome,
             cpf: cpf,
             email: email,
-            senha: password,
+            senha: passCrypt,
             cep: cep,
             telefone: telefone,
         }

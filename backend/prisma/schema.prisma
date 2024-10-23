@@ -22,6 +22,8 @@ model CadastroUsuarios {
   cep      String
   telefone String
 
+  
+  CadastroPedidos CadastroPedidos[]
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -37,9 +39,10 @@ model CadastroFuncionarios {
   senha    String
   telefone String
 
-  
-  hierarquia CadastroHierarquia @relation( fields: [idHierarquia], references: [id])
+  hierarquia   CadastroHierarquia @relation(fields: [idHierarquia], references: [id])
   idHierarquia String
+
+  CadastroPedidos CadastroPedidos[]
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -54,6 +57,8 @@ model CadastroProdutos {
   preco     String
   categoria String
 
+  CadastroItensPedidos CadastroItensPedidos[]
+
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
@@ -61,24 +66,34 @@ model CadastroProdutos {
 }
 
 model CadastroHierarquia {
-  id        String @id @default(uuid())
-  nome      String @unique
-  
-  CadastroFuncionarios CadastroFuncionarios []
+  id   String @id @default(uuid())
+  nome String @unique
 
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
+  CadastroFuncionarios CadastroFuncionarios[]
 
-  
+  create_at       DateTime?         @default(now())
+  update_at       DateTime?         @default(now())
+
 
   @@map("cadastro_Hierarquia")
 }
 
 model CadastroPedidos {
-  id        String @id @default(uuid())
-  data_da_compra   String
-  status String
+  id             String @id @default(uuid())
+  data_da_compra String
+  status         String
   
+
+ funcionarios CadastroFuncionarios @relation(fields: [idFuncionarios], references: [id])
+  idFuncionarios String
+
+ usuarios CadastroUsuarios @relation(fields: [idUsuarios], references: [id])
+  idUsuarios String
+
+ ItensPedidos CadastroItensPedidos@relation(fields: [idItensPedidos], references: [id])
+  idItensPedidos String
+
+
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
@@ -86,9 +101,14 @@ model CadastroPedidos {
 }
 
 model CadastroItensPedidos {
-  id        String @id @default(uuid())
+  id         String @id @default(uuid())
   quantidade String
-  
+
+ CadastroPedidos CadastroPedidos[]
+
+  ItensProdutos CadastroProdutos@relation(fields: [idProdutos], references: [id])
+  idProdutos String
+
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
