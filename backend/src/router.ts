@@ -6,6 +6,7 @@ import { ProdutosControllers } from './Controllers/Produtos/ProdutosControllers'
 import { HierarquiaControllers } from './Controllers/Hierarquia/HierarquiaControllers';
 import { PedidosControllers } from './Controllers/Pedidos/PedidosControllers';
 import { ItensPedidosControllers } from './Controllers/ItensPedidos/ItensPedidosControllers';
+import { LoginUsuariosControllers } from './Controllers/LonginUsuarios/LonginUsuariosContorllers';
 
 const router = Router();
 
@@ -32,5 +33,8 @@ router.get('/consultarPedidos', new PedidosControllers().consultar_pedidos);
 //ItensPedidos
 router.post('/cadastroItensPedidos', new ItensPedidosControllers().cadastro_ItensPedidos);
 router.get('/consultarItensPedidos', new ItensPedidosControllers().consultar_ItensPedidos);
+
+//login
+router.post('/LoginUsuarios', new LoginUsuariosControllers().login_usuarios);
 
 export default router;
