@@ -15,6 +15,8 @@ class GruposServices {
         return ({ dados: 'Cadastro Efetuado com Sucesso'})
     }
 
+    
+
 }
 
 export {GruposServices}

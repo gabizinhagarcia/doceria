@@ -6,9 +6,11 @@ import { GruposControllers } from './Controllers/Grupos/GruposControllers'
 
 const router = Router()
 
-//criação das rotas de end point 
+//rotas usuarios
 router.post('/CadastrarUsuarios', new UsuariosControllers().cadastrarUsuarios)
+router.get('/consultarUsuarios', new UsuariosControllers().consultarUsuarios)
 
+//rotas grupos
 router.post('/CadastrarGrupos', new GruposControllers().cadastrarGrupos)
 
 export default router

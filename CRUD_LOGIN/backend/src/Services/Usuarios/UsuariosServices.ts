@@ -1,4 +1,4 @@
-import  prismaclient from '../../Prisma'
+import prismaclient from '../../Prisma'
 
 interface cadUsuarios {
     nome: string,
@@ -6,7 +6,7 @@ interface cadUsuarios {
     password: string
 }
 class UsuariosServices {
-    async cadastrarUsuarios({nome, email, password}:cadUsuarios){
+    async cadastrarUsuarios({ nome, email, password }: cadUsuarios) {
         await prismaclient.cadastrarUsuarios.create({
             data: {
                 nome: nome,
@@ -14,9 +14,18 @@ class UsuariosServices {
                 senha: password
             }
         })
-        return ({ dados: 'Cadastro Efetuado com Sucesso'})
+        return ({ dados: 'Cadastro Efetuado com Sucesso' })
     }
-
+    async consultarUsuarios() {
+        const resposta = await prismaclient.cadastrarUsuarios.findMany({
+            select: {
+                id: true,
+                nome: true,
+                email: true
+            }
+        })
+        return resposta
+    }
 }
 
-export {UsuariosServices}
+export { UsuariosServices }
