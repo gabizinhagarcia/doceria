@@ -1,4 +1,6 @@
+import prismaClient from '../../Prisma'
 import prismaclient from '../../Prisma'
+import { hash } from 'bcryptjs'
 
 interface cadUsuarios {
     nome: string,
@@ -7,11 +9,13 @@ interface cadUsuarios {
 }
 class UsuariosServices {
     async cadastrarUsuarios({ nome, email, password }: cadUsuarios) {
+
+        const senhaCrypt = await hash(password, 8)
         await prismaclient.cadastrarUsuarios.create({
             data: {
                 nome: nome,
                 email: email,
-                senha: password
+                senha: senhaCrypt
             }
         })
         return ({ dados: 'Cadastro Efetuado com Sucesso' })
@@ -25,6 +29,29 @@ class UsuariosServices {
             }
         })
         return resposta
+    }
+
+    async ConsultarUsuariosUnico (id: string){
+        const resposta = await prismaClient.cadastrarUsuarios.findFirst({
+            where: {
+                id: id
+            },
+            select: {
+                nome:true,
+                email:true,
+                senha:true
+            }
+        })
+        return resposta
+    }
+
+    async apagarUsuarios(id: string) {
+        await prismaClient.cadastrarUsuarios.delete({
+            where: {
+                id: id
+            }
+        })
+        return ({dados: 'registro apagado com sucesso'})
     }
 }
 

@@ -9,6 +9,8 @@ const router = Router()
 //rotas usuarios
 router.post('/CadastrarUsuarios', new UsuariosControllers().cadastrarUsuarios)
 router.get('/consultarUsuarios', new UsuariosControllers().consultarUsuarios)
+router.delete('/ApagarUsuarios/:id', new UsuariosControllers().apagarUsuarios)
+router.post('/ConsultarUsuariosUnico', new UsuariosControllers().consultarUsuariosUnico)
 
 //rotas grupos
 router.post('/CadastrarGrupos', new GruposControllers().cadastrarGrupos)

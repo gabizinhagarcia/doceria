@@ -18,7 +18,7 @@ model CadastrarUsuarios{
   data_alteracao DateTime @updatedAt @db.Timestamptz()
 
 grupos CadastrarGrupos @relation(fields: [idGrupos], references: [id])
-idGrupos String @default("f359b962-8945-4a58-898b-baa95630c948")
+idGrupos String @default("7e5c9f97-7179-40ac-8d4b-359a5ac04e01")
 
   @@map("cadastro_usuarios")
 }
