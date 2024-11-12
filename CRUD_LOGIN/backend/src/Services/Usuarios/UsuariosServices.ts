@@ -7,6 +7,13 @@ interface cadUsuarios {
     email: string,
     password: string
 }
+
+interface AlterarUsuarios{
+    id: string
+    nome: string
+    email: string
+}
+
 class UsuariosServices {
     async cadastrarUsuarios({ nome, email, password }: cadUsuarios) {
 
@@ -31,18 +38,31 @@ class UsuariosServices {
         return resposta
     }
 
-    async ConsultarUsuariosUnico (id: string){
+    async ConsultarUsuariosUnico(id: string) {
         const resposta = await prismaClient.cadastrarUsuarios.findFirst({
             where: {
                 id: id
             },
             select: {
-                nome:true,
-                email:true,
-                senha:true
+                nome: true,
+                email: true,
+                senha: true
             }
         })
         return resposta
+    }
+
+    async alterarDadosUsuarios({ id, nome, email }: AlterarUsuarios) {
+        await prismaClient.cadastrarUsuarios.update({
+            where: {
+                id:id
+            },
+            data: {
+                nome:nome,
+                email:email
+            }
+        })
+        return ({dados: 'cadastro efetuado com sucesso'})
     }
 
     async apagarUsuarios(id: string) {
@@ -51,7 +71,7 @@ class UsuariosServices {
                 id: id
             }
         })
-        return ({dados: 'registro apagado com sucesso'})
+        return ({ dados: 'registro apagado com sucesso' })
     }
 }
 
