@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma"
 import { hash } from 'bcryptjs'
 
-interface CadUsuarios{
+interface CadUsuarios {
     nome: string
     cpf: string
     email: string
@@ -10,44 +10,86 @@ interface CadUsuarios{
     telefone: string
 }
 
-class UsuariosServices{
- async cadastrar_usuarios({nome, cpf, email, password, cep, telefone, }: CadUsuarios){
+interface AlterarUsuarios {
+    id: string
+    nome: string
+    email: string
+}
 
-    const cpfExiste = await prismaClient.cadastroUsuarios.findFirst({
-        where: {
-            cpf: cpf 
+class UsuariosServices {
+    async cadastrar_usuarios({ nome, cpf, email, password, cep, telefone, }: CadUsuarios) {
+
+        const cpfExiste = await prismaClient.cadastroUsuarios.findFirst({
+            where: {
+                cpf: cpf
+            }
+        })
+        if (cpfExiste) {
+            throw new Error('CPF js esta cadastrado')
         }
-    })
-    if(cpfExiste){
-        throw new Error('CPF js esta cadastrado')
+
+        const passCrypt = await hash(password, 8)
+
+        const resposta = await prismaClient.cadastroUsuarios.create({
+            data: {
+                nome: nome,
+                cpf: cpf,
+                email: email,
+                senha: passCrypt,
+                cep: cep,
+                telefone: telefone,
+            }
+        })
+        return ({ dados: 'Cadastro Efetuado com Sucesso' })
+    }
+    async consultar_usuarios() {
+        const resposta = await prismaClient.cadastroUsuarios.findMany({
+            select: {
+                id: true,
+                nome: true,
+                email: true,
+                cpf: true
+
+            }
+        })
+        return resposta
+    }
+    async ConsultarUsuariosUnico(id: string) {
+        const resposta = await prismaClient.cadastroUsuarios.findFirst({
+            where: {
+                id: id
+            },
+            select: {
+                nome: true,
+                email: true,
+                senha: true
+            }
+        })
+        return resposta
+
     }
 
-    const passCrypt = await hash(password, 8)
+    async alterarDadosUsuarios({ id, nome, email }: AlterarUsuarios) {
+        await prismaClient.cadastroUsuarios.update({
+            where: {
+                id: id
+            },
+            data: {
+                nome: nome,
+                email: email
+            }
+        })
+        return ({ dados: 'cadastro efetuado com sucesso' })
+    }
 
-    const resposta = await prismaClient.cadastroUsuarios.create({
-        data: {
-            nome: nome,
-            cpf: cpf,
-            email: email,
-            senha: passCrypt,
-            cep: cep,
-            telefone: telefone,
-        }
-    })
-    return ({dados: 'Cadastro Efetuado com Sucesso'})
- }
- async consultar_usuarios(){
-    const resposta = await prismaClient.cadastroUsuarios.findMany({
-        select: {
-            nome: true,
-            email: true,
-            cpf: true 
-
-        }
-    })
-    return resposta 
- }
- 
+    async apagarUsuarios(id: string) {
+        await prismaClient.cadastroUsuarios.delete({
+            where: {
+                id: id
+            }
+        })
+        return ({ dados: 'registro apagado com sucesso' })
+    }
 }
 
 export { UsuariosServices }

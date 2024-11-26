@@ -6,13 +6,17 @@ import { ProdutosControllers } from './Controllers/Produtos/ProdutosControllers'
 import { HierarquiaControllers } from './Controllers/Hierarquia/HierarquiaControllers';
 import { PedidosControllers } from './Controllers/Pedidos/PedidosControllers';
 import { ItensPedidosControllers } from './Controllers/ItensPedidos/ItensPedidosControllers';
-import { LoginUsuariosControllers } from './Controllers/LonginUsuarios/LonginUsuariosContorllers';
+import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
 
 const router = Router();
 
 //usuarios
 router.post('/cadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
 router.get('/consultarUsuarios', new UsuariosControllers().consultar_usuarios);
+router.delete('/ApagarUsuarios/:id', new UsuariosControllers().apagarUsuarios)
+router.post('/ConsultarUsuariosUnico', new UsuariosControllers().consultarUsuariosUnico)
+router.put('/AlterarDadosUsuarios', new UsuariosControllers().alterarDadosUsuarios)
+
 
 //funcionarios
 router.post('/cadastroFuncionarios', new FuncionariosControllers().cadastro_funcionarios);
@@ -35,6 +39,8 @@ router.post('/cadastroItensPedidos', new ItensPedidosControllers().cadastro_Iten
 router.get('/consultarItensPedidos', new ItensPedidosControllers().consultar_ItensPedidos);
 
 //login
-router.post('/LoginUsuarios', new LoginUsuariosControllers().login_usuarios);
+router.post('/LoginUsuarios', new LoginUsuariosControllers().loginUsuarios);
+router.get('/VerificaToken', new LoginUsuariosControllers().verificaToken)
+
 
 export default router;
