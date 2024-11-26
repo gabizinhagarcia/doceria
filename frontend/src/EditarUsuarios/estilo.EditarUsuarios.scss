@@ -1,0 +1,49 @@
+.containerEditarUsuarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    background-color: #9bd9ec;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    color: #161416;
+    font-weight: bold;
+    margin: 0; 
+   
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #90d6ee;
+
+    input {
+        width: 70%;
+        height: 3rem;
+        margin-top: 0.5rem;
+        border-radius: 0.8rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    button {
+        width: 30%;
+        background-color: #cdaae9;
+        height: 3rem;
+        margin-top: 0.5rem;
+        border-radius: 0.8rem;
+        border-width: 0;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+}

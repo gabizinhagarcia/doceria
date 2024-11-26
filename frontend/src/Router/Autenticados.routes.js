@@ -1,15 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import EditarUsuarios from '../EditarUsuarios/index'
 
-import DashBoardEmpresa from '../Dashboard/Empresa'
+import DashBoard from '../Dashboard'
 
-export default function Autenticados() {
+export default function Autenticado() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<DashBoardEmpresa />} />
-
-
-                <Route path='*' element={<DashBoardEmpresa />} />
+                <Route path='/' element={< DashBoard />} />
+                <Route path='/EditarUsuarios/:id' element={< EditarUsuarios />} />
+     
+                
+                <Route path='*' element={< DashBoard />} />
             </Routes>
         </BrowserRouter>
     )

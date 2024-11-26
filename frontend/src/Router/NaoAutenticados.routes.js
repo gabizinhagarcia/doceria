@@ -1,9 +1,11 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CadastroUsuarios from '../CadastroUsuarios/CadastroUsuarios'
+import Inicio from '../Inicio'
+
 import Cardapio from '../Cardapio/cardapio'
 import MaisVendidos from '../MaisVendidos/MaisVendidos'
-
 import Cabecalho from '../Components/Cabecalho'
-import Inicio from '../Inicio'
 import Rodape from '../Components/Rodape'
 
 export default function NaoAutenticados() {
@@ -15,7 +17,8 @@ export default function NaoAutenticados() {
 
                 <Route path='/cardapio' element={<Cardapio />} />
                 <Route path='/mais vendidos' element={<MaisVendidos />} />
-
+                <Route path='/CadatroUsuarios' element={< CadastroUsuarios />} />
+                
 
                 <Route path='*' element={<Inicio />} />
             </Routes>
