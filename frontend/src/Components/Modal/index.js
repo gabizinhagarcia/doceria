@@ -1,27 +1,29 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import { AutenticadoContexto } from '../../contexts/authContexts'
 import { Link } from "react-router-dom"
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import './estilo.inicio.scss'
 
 
 export default function App() {
 
-    const  loginEntrada  = useContext(AutenticadoContexto)
+    const { loginEntrada } = useContext(AutenticadoContexto)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    async function dadosLogin(e){
+    async function dadosLogin(e) {
         e.preventDefault()
-        if(!email || !password ){
+        if (!email || !password) {
             toast.warning('preencha todos os campos')
             return
         }
         try {
-            await loginEntrada(email, password)
+            await loginEntrada(email, password);
         } catch (err) {
-            
+
+            // console.log(email, password)
+            alert("falha ao fazer login.");
         }
     }
 
@@ -33,20 +35,20 @@ export default function App() {
                 <input
                     type="text"
                     placeholder='Digite o E-mail'
-                    value= {email}
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
                     type="password"
                     placeholder='Digite a Senha'
-                    value= {password}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <button>Enviar</button>
             </form>
-            <p>para se cadastrar clique <Link to='/CadatroUsuarios'> AQUI </Link> </p>
+            <p>para se cadastrar clique <Link to='/CadastroUsuarios'> AQUI </Link> </p>
         </div>
     )
 }

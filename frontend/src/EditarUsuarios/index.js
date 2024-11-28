@@ -11,7 +11,7 @@ export default function EditarUsuarios() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    
+
         useEffect(() => {
             try {
                 async function consultarDados() {

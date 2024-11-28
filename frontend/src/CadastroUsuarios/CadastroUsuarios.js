@@ -2,28 +2,37 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './estilo.cadUsuarios.scss'
 import apilocal from '../Api/apiLocal'
+import { toast } from 'react-toastify'
 
 export default function CadastrarUsuarios() {
 
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [telefone, setTelefone] = useState('')
+    const [cep, setCep] = useState('')
 
-    async function CadastrarUsuarios() {
+    
+    
+    async function CadastrarUsuarios(e) {
         try {
-            if(!nome || email || password){
+            e.preventDefault()
+            if (!nome || !email || !password || !cpf || !telefone || !cep) {
                 alert("campos em branco")
                 return
-            }
-        await apilocal.post('/CadastrarUsuarios', {
-            nome,
-            email,
-            password
+            };
+            await apilocal.post('/cadastroUsuarios', {
+                nome,
+                email,
+                password,
+                cpf,
+                telefone,
+                cep
             })
-            alert('cadastro efetuadon com sucesso')
-    
+            toast.success('cadastro efetuadon com sucesso')
         } catch (err) {
-            alert('Erro ao comunicar com BackEnd')
+            toast.error('Erro ao comunicar com BackEnd')
         }
     }
 
@@ -49,7 +58,28 @@ export default function CadastrarUsuarios() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button>Enviar</button>
+
+                <input
+                    type="text"
+                    placeholder='Digite Seu cpf'
+                    value={cpf}
+                    onChange={(e) => setCpf(e.target.value)}
+                />
+
+                <input
+                    type="text"
+                    placeholder='Digite Seu telefone'
+                    value={telefone}
+                    onChange={(e) => setTelefone(e.target.value)}
+                />
+
+                <input
+                    type="text"
+                    placeholder='Digite Seu cep'
+                    value={cep}
+                    onChange={(e) => setCep(e.target.value)}
+                />
+                <button type='submit'>Enviar</button>
             </form>
             <Link to='/' className='buttonVoltar' >Voltar Inicio</Link>
         </div>

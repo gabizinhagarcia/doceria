@@ -17,7 +17,7 @@ export default function NaoAutenticados() {
 
                 <Route path='/cardapio' element={<Cardapio />} />
                 <Route path='/mais vendidos' element={<MaisVendidos />} />
-                <Route path='/CadatroUsuarios' element={< CadastroUsuarios />} />
+                <Route path='/CadastroUsuarios' element={< CadastroUsuarios />} />
                 
 
                 <Route path='*' element={<Inicio />} />
