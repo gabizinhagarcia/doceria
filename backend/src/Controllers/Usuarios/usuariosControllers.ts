@@ -12,7 +12,6 @@ class UsuariosControllers {
       password,
       cep,
       telefone
-
     })  
     return res.json(resposta) 
   }

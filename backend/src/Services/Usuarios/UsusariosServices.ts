@@ -25,7 +25,7 @@ class UsuariosServices {
             }
         })
         if (cpfExiste) {
-            throw new Error('CPF js esta cadastrado')
+            throw new Error('CPF já esta cadastrado')
         }
 
         const passCrypt = await hash(password, 8)
