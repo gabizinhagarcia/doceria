@@ -11,8 +11,6 @@ export default function DashBoard() {
     const iToken = localStorage.getItem('@token')
     const token = JSON.parse(iToken)
 
-    
-
     useEffect(() => {
         try {
             async function consultarDadosusuarios() {
@@ -29,7 +27,7 @@ export default function DashBoard() {
                 toastId: 'ToastId'
             })
         }
-    }, [])
+    }, [dadosUsuarios])
 
     async function apagaUsuarios(id) {
         try {

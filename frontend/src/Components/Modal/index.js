@@ -21,8 +21,6 @@ export default function App() {
         try {
             await loginEntrada(email, password);
         } catch (err) {
-
-            // console.log(email, password)
             alert("falha ao fazer login.");
         }
     }
