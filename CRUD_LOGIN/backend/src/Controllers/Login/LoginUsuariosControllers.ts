@@ -14,7 +14,10 @@ class LoginUsuariosControllers{
 
     async verificaToken(req: Request, res: Response){
         const id = req.usuarioId
-        console.log(id)
+        
+        const enviarDadosServices = new LoginServices()
+        const resposta = await enviarDadosServices.verificaToken(id)
+        return res.json(resposta)
     }
 }
 

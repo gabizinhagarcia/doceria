@@ -9,7 +9,7 @@ import { estaAutenticado } from './middleware/estaAutenticado'
 const router = Router()
 
 //rotas usuarios
-router.post('/CadastrarUsuarios', estaAutenticado, new UsuariosControllers().cadastrarUsuarios)
+router.post('/CadastrarUsuarios',  new UsuariosControllers().cadastrarUsuarios)
 router.get('/consultarUsuarios', estaAutenticado, new UsuariosControllers().consultarUsuarios)
 router.delete('/ApagarUsuarios/:id', estaAutenticado, new UsuariosControllers().apagarUsuarios)
 router.post('/ConsultarUsuariosUnico', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico)
