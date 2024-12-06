@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AutenticadoContexto } from '../contexts/authContexts'
 import { useParams, useNavigate } from 'react-router-dom'
 import apiLocal from './../Api/apiLocal'
 import './estilo.EditarUsuarios.scss'
 import { toast } from 'react-toastify'
 
 export default function EditarUsuarios() {
+
+    const { verificarToken } = useContext(AutenticadoContexto)
+    verificarToken()
+
     const mudarTela = useNavigate()
     const { id } = useParams()
     const [nome, setNome] = useState('')
@@ -40,12 +45,12 @@ export default function EditarUsuarios() {
             toast.success('Cadastro Alterado com Sucesso', {
                 toastId: 'ToastId'
             })
-            mudarTela('/')                        
+            mudarTela('/')
         } catch (err) {
             toast.error('Erro ao Comunicar com o Servidor', {
                 toastId: 'ToastId'
             })
-        }       
+        }
     }
 
     return (

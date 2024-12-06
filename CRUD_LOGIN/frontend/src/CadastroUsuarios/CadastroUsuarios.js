@@ -8,6 +8,10 @@ export default function CadastrarUsuarios() {
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [telefone, setTelefone] = useState('')
+    const [cep, setCep] = useState('')
+
 
     async function CadastrarUsuarios() {
         try {
@@ -18,7 +22,11 @@ export default function CadastrarUsuarios() {
         await apilocal.post('/CadastrarUsuarios', {
             nome,
             email,
-            password
+            password,
+            cpf,
+            telefone, 
+            cep,
+
             })
             alert('cadastro efetuadon com sucesso')
     
@@ -48,6 +56,24 @@ export default function CadastrarUsuarios() {
                     placeholder='Digite Sua Senha'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                />
+                  <input
+                    type="text"
+                    placeholder='Digite Seu cpf'
+                    value={cpf}
+                    onChange={(e) => setCpf(e.target.value)}
+                />
+                  <input
+                    type="Text"
+                    placeholder='Digite Seu telefone '
+                    value={telefone}
+                    onChange={(e) => setTelefone(e.target.value)}
+                />
+                  <input
+                    type="text"
+                    placeholder='Digite Sua cep'
+                    value={cep}
+                    onChange={(e) => setCep(e.target.value)}
                 />
                 <button>Enviar</button>
             </form>

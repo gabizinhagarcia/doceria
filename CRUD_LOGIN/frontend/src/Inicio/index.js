@@ -1,12 +1,14 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, } from 'react'
 import { AutenticadoContexto } from '../contexts/authContexts'
 import { Link } from "react-router-dom"
 import {toast} from 'react-toastify'
-import './estilo.inicio.scss'
+
 
 export default function Inicio() {
 
-    const { loginEntrada } = useContext(AutenticadoContexto)
+    const { loginEntrada, verificarToken } = useContext(AutenticadoContexto)
+
+    verificarToken()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
